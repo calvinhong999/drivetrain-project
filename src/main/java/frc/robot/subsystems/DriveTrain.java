@@ -34,7 +34,7 @@ public class DriveTrain {
         //make the slaves follow the masters(motors)
         leftSlaveMotor.follow(leftMasterMotor);
         rightSlaveMotor.follow(rightMasterMotor);
-    
+    }
 
     public void setBrakeMode() {
 
@@ -61,4 +61,3 @@ public class DriveTrain {
 
     }
     
-}
