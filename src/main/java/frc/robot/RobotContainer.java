@@ -8,10 +8,9 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.subsystems.DriveTrain;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -24,13 +23,17 @@ public class RobotContainer {
 
   public static final class Config {
 
-    public static final int joystickVariable = 2;
-
+    public static final int joystickPort = 1;
+    public static final int breakButton = 6;
+    public static final int coastButton = 9;
   }
-
+  //defines final joystick, drivetrain, and arcadedrive
   private final DriveTrain m_drivetrain = new DriveTrain();
-  private final Joystick m_joystick = new Joystick(Config.joystickVariable);
+  private final Joystick m_joystick = new Joystick(Config.joystickPort);
   private final ArcadeDrive arcadeDrive = new ArcadeDrive(m_joystick, m_drivetrain);
+  private final JoystickButton m_breakButton = new JoystickButton(m_joystick, Config.breakButton);
+  private final JoystickButton m_coastButton = new JoystickButton(m_joystick, Config.coastButton);
+    
   
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -43,8 +46,10 @@ public class RobotContainer {
 
     m_drivetrain.setDefaultCommand(arcadeDrive);
     return arcadeDrive;
-
   }
+
+ 
+
 
 
   /**
