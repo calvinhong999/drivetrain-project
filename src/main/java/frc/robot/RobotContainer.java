@@ -10,6 +10,11 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ArcadeDrive;
+import frc.robot.commands.ArmDown;
+import frc.robot.commands.ArmUp;
+import frc.robot.commands.SetBrakeMode;
+import frc.robot.commands.SetCoastMode;
+import frc.robot.subsystems.ArmMotor;
 import frc.robot.subsystems.DriveTrain;
 
 /**
@@ -26,6 +31,8 @@ public class RobotContainer {
     public static final int joystickPort = 1;
     public static final int breakButton = 6;
     public static final int coastButton = 9;
+    public static final int armUpButton = 2;
+    public static final int armDownButton = 3;
   }
   //defines final joystick, drivetrain, and arcadedrive
   private final DriveTrain m_drivetrain = new DriveTrain();
@@ -33,6 +40,9 @@ public class RobotContainer {
   private final ArcadeDrive arcadeDrive = new ArcadeDrive(m_joystick, m_drivetrain);
   private final JoystickButton m_breakButton = new JoystickButton(m_joystick, Config.breakButton);
   private final JoystickButton m_coastButton = new JoystickButton(m_joystick, Config.coastButton);
+  private final ArmMotor m_armMotor = new ArmMotor();
+  private final JoystickButton m_armDownButton = new JoystickButton(m_joystick, Config.armDownButton);
+  private final JoystickButton m_armUpButton = new JoystickButton(m_joystick, Config.armUpButton);
     
   
 
@@ -45,7 +55,7 @@ public class RobotContainer {
   public Command getTeleopCommand() {
 
     m_drivetrain.setDefaultCommand(arcadeDrive);
-    return arcadeDrive;
+     return arcadeDrive;
   }
 
  
@@ -58,7 +68,12 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    m_breakButton.whenPressed( new SetBrakeMode(m_drivetrain));
+    m_coastButton.whenPressed( new SetCoastMode(m_drivetrain));
+    m_armUpButton.whenPressed( new ArmUp(m_armMotor));
+    m_armDownButton.whenPressed(new ArmDown(m_armMotor));
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

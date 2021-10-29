@@ -5,31 +5,28 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveTrain;
-import com.revrobotics.CANSparkMax.IdleMode;
+import frc.robot.subsystems.ArmMotor;
 
-public class SetBrakeMode extends CommandBase {
-  /** Creates a new SetBrakeMode. */
-
-  private final DriveTrain m_drivetrain;
-
-  public SetBrakeMode(DriveTrain drivetrain) {
-    // Use addRequirements() here to declare subsystem dependencies.
-    m_drivetrain = drivetrain;
+public class ArmDown extends CommandBase {
+  /** Creates a new ArmDown. */
+  
+  private final ArmMotor m_arm;
+  
+  public ArmDown(ArmMotor arm) {
+  
+    m_arm = arm;
+  
+   
   }
 
-
-
-// Called when the command is initially scheduled.
+  // Called when the command is initially scheduled.
   @Override
   public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
-    m_drivetrain.setBrakeMode();
-
+    m_arm.setArmDown();
   }
 
   // Called once the command ends or is interrupted.
@@ -39,7 +36,6 @@ public class SetBrakeMode extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return m_drivetrain.getMotorMode() == IdleMode.kBrake;
-
+    return false;
   }
 }
