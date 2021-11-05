@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.ArmDown;
 import frc.robot.commands.ArmUp;
+import frc.robot.commands.MoveWithPID;
 import frc.robot.commands.SetBrakeMode;
 import frc.robot.commands.SetCoastMode;
 import frc.robot.subsystems.ArmMotor;
@@ -33,6 +34,7 @@ public class RobotContainer {
     public static final int coastButton = 9;
     public static final int armUpButton = 2;
     public static final int armDownButton = 3;
+    public static final int moveWithPIDButton = 4;
   }
   //defines final joystick, drivetrain, and arcadedrive
   private final DriveTrain m_drivetrain = new DriveTrain();
@@ -43,6 +45,7 @@ public class RobotContainer {
   private final ArmMotor m_armMotor = new ArmMotor();
   private final JoystickButton m_armDownButton = new JoystickButton(m_joystick, Config.armDownButton);
   private final JoystickButton m_armUpButton = new JoystickButton(m_joystick, Config.armUpButton);
+  private final JoystickButton m_moveWithPIDButton = new JoystickButton(m_joystick, Config.moveWithPIDButton);
     
   
 
@@ -73,6 +76,7 @@ public class RobotContainer {
     m_coastButton.whenPressed( new SetCoastMode(m_drivetrain));
     m_armUpButton.whenPressed( new ArmUp(m_armMotor));
     m_armDownButton.whenPressed(new ArmDown(m_armMotor));
+    m_moveWithPIDButton.whenPressed(new MoveWithPID(m_drivetrain, 5));
   }
 
   /**

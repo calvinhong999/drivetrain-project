@@ -74,6 +74,10 @@ public class DriveTrain extends SubsystemBase{
 
     }
 
+    public double returnEncoderPosition(){
+        return rightEncoder.getPosition();
+    }
+
 
     
 
