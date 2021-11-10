@@ -34,15 +34,7 @@ public class ColorWheel extends SubsystemBase {
         }
 
 
-    }
-
-    
-    
-   
-
-    
-    
-    
+    } 
   }
 
   @Override
@@ -57,15 +49,15 @@ public class ColorWheel extends SubsystemBase {
 
     System.out.println("The color we want to get to is " + Config.colorWheel[Config.colorNumberToFind]);
     
-    if (Config.currentColorNumber - Math.abs(Config.colorNumbersToFind[0]) <= Config.currentColorNumber - Math.abs(Config.colorNumbersToFind[1])) {
+    if (Math.abs(Config.currentColorNumber - Config.colorNumbersToFind[0]) <= Math.abs(Config.currentColorNumber - Config.colorNumbersToFind[1])) {
       Config.colorNumbersToFind[0] = Config.finalColorNumber;
     }
     
-    else if (Config.currentColorNumber - Math.abs(Config.colorNumbersToFind[0]) >= Config.currentColorNumber - Math.abs(Config.colorNumbersToFind[1])){
+    else if (Math.abs(Config.currentColorNumber - Config.colorNumbersToFind[0]) >= Math.abs(Config.currentColorNumber - Math.abs(Config.colorNumbersToFind[1]))){
       Config.colorNumbersToFind[1] = Config.finalColorNumber;
    }
      
-   else if (Config.currentColorNumber - Math.abs(Config.colorNumbersToFind[0]) == Config.currentColorNumber - Math.abs(Config.colorNumbersToFind[1])){
+   else if (Math.abs(Config.currentColorNumber - Config.colorNumbersToFind[0]) == Math.abs(Config.currentColorNumber - Math.abs(Config.colorNumbersToFind[1]))){
      Config.colorNumbersToFind[1] = Config.finalColorNumber;
 
    }
@@ -82,6 +74,7 @@ public class ColorWheel extends SubsystemBase {
      else if (Config.finalColorNumber == 0) {
        System.out.println("The wheel is already at the goal color");
      }
+     //determines which way the wheel has to turn and also prints the amount it has to turn
 
 }
 }

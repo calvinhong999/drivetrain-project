@@ -13,10 +13,14 @@ import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.ArmDown;
 import frc.robot.commands.ArmUp;
 import frc.robot.commands.MoveWithPID;
+import frc.robot.commands.PneumaticSetForward;
+import frc.robot.commands.PneumaticSetOff;
+import frc.robot.commands.PneumaticSetReverse;
 import frc.robot.commands.SetBrakeMode;
 import frc.robot.commands.SetCoastMode;
 import frc.robot.subsystems.ArmMotor;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.PneumaticArm;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -35,6 +39,9 @@ public class RobotContainer {
     public static final int armUpButton = 2;
     public static final int armDownButton = 3;
     public static final int moveWithPIDButton = 4;
+    public static final int PneumaticArmSetForwardButton = 5;
+    public static final int PneumaticArmSetOffButton = 7;
+    public static final int PneumaticArmSetReverseButton = 8;
   }
   //defines final joystick, drivetrain, and arcadedrive
   private final DriveTrain m_drivetrain = new DriveTrain();
@@ -46,8 +53,10 @@ public class RobotContainer {
   private final JoystickButton m_armDownButton = new JoystickButton(m_joystick, Config.armDownButton);
   private final JoystickButton m_armUpButton = new JoystickButton(m_joystick, Config.armUpButton);
   private final JoystickButton m_moveWithPIDButton = new JoystickButton(m_joystick, Config.moveWithPIDButton);
-    
-  
+  private final PneumaticArm m_pneumaticArm = new PneumaticArm();
+  private final JoystickButton m_PneumaticSetForwardButton = new JoystickButton(m_joystick, Config.PneumaticArmSetForwardButton);
+  private final JoystickButton m_PneumaticSetOffButton = new JoystickButton(m_joystick, Config.PneumaticArmSetOffButton);
+  private final JoystickButton m_PneumaticSetReverseButton = new JoystickButton(m_joystick, Config.PneumaticArmSetReverseButton);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -77,6 +86,9 @@ public class RobotContainer {
     m_armUpButton.whenPressed( new ArmUp(m_armMotor));
     m_armDownButton.whenPressed(new ArmDown(m_armMotor));
     m_moveWithPIDButton.whenPressed(new MoveWithPID(m_drivetrain, 5));
+    m_PneumaticSetForwardButton.whenPressed(new PneumaticSetForward(m_pneumaticArm));
+    m_PneumaticSetOffButton.whenPressed(new PneumaticSetOff(m_pneumaticArm));
+    m_PneumaticSetReverseButton.whenPressed(new PneumaticSetReverse(m_pneumaticArm));
   }
 
   /**
