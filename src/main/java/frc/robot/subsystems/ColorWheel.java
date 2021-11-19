@@ -14,6 +14,7 @@ public class ColorWheel extends SubsystemBase {
 
   public static final class Config{
     public static final String[] colorWheel = {"Red", "Green", "Yellow", "Blue", "Red", "Green", "Yellow", "Blue"};
+    //color wheel as provided by Thomas
     public static final Random random = new Random();
     public static final int currentColorNumber = random.nextInt(colorWheel.length);
     public static final int colorNumberToFind = random.nextInt(colorWheel.length);
@@ -30,7 +31,7 @@ public class ColorWheel extends SubsystemBase {
         int a = 0;
         Config.colorNumbersToFind[a] = i;
         a += 1;
-        //finds the strings in colorWheel that are equal to the color you want to find
+        //finds the strings in colorWheel that are equal to the color you want to find(since there are two instances of every color)
         }
 
 
@@ -46,11 +47,14 @@ public class ColorWheel extends SubsystemBase {
   public void MoveColorWheel () {
     
     System.out.println("The current color on the wheel is " + Config.colorWheel[Config.currentColorNumber]);
+    //prints current color
 
     System.out.println("The color we want to get to is " + Config.colorWheel[Config.colorNumberToFind]);
+    //prints color we want to get to
     
     if (Math.abs(Config.currentColorNumber - Config.colorNumbersToFind[0]) <= Math.abs(Config.currentColorNumber - Config.colorNumbersToFind[1])) {
       Config.colorNumbersToFind[0] = Config.finalColorNumber;
+      
     }
     
     else if (Math.abs(Config.currentColorNumber - Config.colorNumbersToFind[0]) >= Math.abs(Config.currentColorNumber - Math.abs(Config.colorNumbersToFind[1]))){
@@ -74,7 +78,7 @@ public class ColorWheel extends SubsystemBase {
      else if (Config.finalColorNumber == 0) {
        System.out.println("The wheel is already at the goal color");
      }
-     //determines which way the wheel has to turn and also prints the amount it has to turn
+     //determines which way the wheel has to turn based on whether the number is negative and also prints the amount it has to turn
 
 }
 }

@@ -5,15 +5,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Drivetrain;
 import com.revrobotics.CANSparkMax.IdleMode;
 
 public class SetCoastMode extends CommandBase {
   /** Creates a new SetCoastMode. */
   
-  private final DriveTrain m_driveTrain;
+  private final Drivetrain m_driveTrain;
   
-  public SetCoastMode(DriveTrain driveTrain) {
+  public SetCoastMode(Drivetrain driveTrain) {
     // Use addRequirements() here to declare subsystem dependencies.
   m_driveTrain = driveTrain;
   }

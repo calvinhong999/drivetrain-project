@@ -6,18 +6,18 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Drivetrain;
 
 public class MoveWithPID extends CommandBase {
   
   /** Creates a new MoveWithPID. */
 
-  private final DriveTrain m_drivetrain;
+  private final Drivetrain m_drivetrain;
   private final double m_setPoint;
   
-  private PIDController m_PID = new PIDController(DriveTrain.Config.kP, DriveTrain.Config.kI, DriveTrain.Config.kD);
+  private PIDController m_PID = new PIDController(Drivetrain.Config.kP, Drivetrain.Config.kI, Drivetrain.Config.kD);
   
-  public MoveWithPID(DriveTrain drivetrain, double setPoint) {
+  public MoveWithPID(Drivetrain drivetrain, double setPoint) {
     m_drivetrain = drivetrain;
     m_setPoint = setPoint;
     addRequirements(m_drivetrain);

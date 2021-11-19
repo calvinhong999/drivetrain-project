@@ -15,9 +15,11 @@ public class ArmMotor extends SubsystemBase {
   public static final class Config {
     
     public static final int armMotorID = 1;
+    //sets arm motor ID
     }
   
   private CANSparkMax armMotor = new CANSparkMax(Config.armMotorID, MotorType.kBrushless);
+  //creates arm
     
     public ArmMotor() {
     
@@ -25,12 +27,13 @@ public class ArmMotor extends SubsystemBase {
   }
   public void setArmUp(){
   armMotor.set(1);
+  //sets arm to up
 
   }
 
   public void setArmDown(){
   armMotor.set(-1);
-
+  //setes arm down
   }
 
   @Override

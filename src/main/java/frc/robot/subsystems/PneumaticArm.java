@@ -21,6 +21,7 @@ public class PneumaticArm extends SubsystemBase {
   }
 
   private final DoubleSolenoid m_solenoid = new DoubleSolenoid(Config.moduleNumber, Config.forwardChannel, Config.reverseChannel);
+  //new solenoid
 
 
   public PneumaticArm() {
@@ -38,6 +39,7 @@ public class PneumaticArm extends SubsystemBase {
   public void setReverse() {
     m_solenoid.set(Value.kReverse);
   }
+  //all of these are pretty self explanatory(sets the pneumatic arm to off, forward, and reverse)
 
   @Override
   public void periodic() {

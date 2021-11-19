@@ -5,17 +5,18 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Drivetrain;
+
 import com.revrobotics.CANSparkMax.IdleMode;
 
 public class SetBrakeMode extends CommandBase {
   /** Creates a new SetBrakeMode. */
 
-  private final DriveTrain m_drivetrain;
+  private final Drivetrain m_drivetrain;
 
-  public SetBrakeMode(DriveTrain drivetrain) {
+  public SetBrakeMode(Drivetrain m_drivetrain2) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_drivetrain = drivetrain;
+    m_drivetrain = m_drivetrain2;
   }
 
 
